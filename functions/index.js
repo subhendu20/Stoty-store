@@ -2,8 +2,8 @@ const express = require('express')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv').config()
 const middleware = require('body-parser')
-const userLog = require('./Router/Userlog')
-const storyLog = require('./Router/StoryLog')
+const userLog = require('../Router/Userlog')
+const storyLog = require('../Router/StoryLog')
 const path = require('path')
 
 const serverless = require('serverless-http');
