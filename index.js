@@ -6,7 +6,9 @@ const userLog = require('./Router/Userlog')
 const storyLog = require('./Router/StoryLog')
 const path = require('path')
 
+const serverless = require('serverless-http');
 const app = express()
+const router = express.Router();
 // ---------------------------------------------database connection------------------------------------------//
 mongoose.connect(process.env.DB,{
           useNewUrlParser:true,
@@ -32,6 +34,5 @@ app.use('*', function(req,res){
 })
 
 
-app.listen(process.env.PORT,()=>{
-          console.log(`port running at ${process.env.PORT}`)
-})
+app.use('/.netlify/functions/api', router);
+module.exports.handler = serverless(app);
